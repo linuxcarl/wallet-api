@@ -1,0 +1,19 @@
+{
+  "name": "wallet-api",
+  "version": "1.0.0",
+  "description": "API wallet",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linuxcarl/wallet-api.git"
+  },
+  "author": "Carlos Enirque Ramírez Flores",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/linuxcarl/wallet-api/issues"
+  },
+  "homepage": "https://github.com/linuxcarl/wallet-api#readme"
+}
