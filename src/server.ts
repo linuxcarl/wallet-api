@@ -20,13 +20,13 @@ export class Server {
     this.#app = express();
   }
   private configApp(): void {
-    this.#app.use(express.json);
+    this.#app.use(express.json());
     this.#app.use(cors());
     this.#app.use(helmet());
   }
   private runServer(): void {
     this.#app.listen(this.#port, () =>
-      console.log(`Server running in the port ${this.#port}`)
+      console.log('Server running in the port %s', this.#port)
     );
   }
 }
