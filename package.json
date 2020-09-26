@@ -6,7 +6,7 @@
   "scripts": {
     "tsc": "tsc",
     "start": "NODE_ENV=production node ./dist/server.js",
-    "dev": "ts-node-dev --respawn --transpile-only ./api/server.ts",
+    "dev": "ts-node-dev --respawn --transpile-only ./src/app.ts",
     "tslint": "tslint --project tsconfig.json",
     "prettier:base": "prettier --parser typescript --single-quote",
     "prettier:check": "npm run prettier:base -- --list-different \"./src/**/*.{ts}\"",
