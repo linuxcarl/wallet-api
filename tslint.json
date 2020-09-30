@@ -18,7 +18,12 @@
         "ignore-pattern": "^import [^,]+ from |^export | implements"
       }
     ],
-    "variable-name": [true, "allow-snake-case"]
+    "variable-name": [
+      true,
+      "allow-snake-case",
+      "allow-pascal-case",
+      "allow-trailing-underscore"
+    ]
   },
   "rulesDirectory": []
 }
