@@ -10,7 +10,15 @@
     "quotemark": [true, "single"],
     "no-console": false,
     "trailing-comma": false,
-    "import-name": [false]
+    "import-name": [false],
+    "max-line-length": [
+      true,
+      {
+        "limit": 120,
+        "ignore-pattern": "^import [^,]+ from |^export | implements"
+      }
+    ],
+    "variable-name": [true, "allow-snake-case"]
   },
   "rulesDirectory": []
 }
