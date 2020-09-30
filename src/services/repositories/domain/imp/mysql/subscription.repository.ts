@@ -7,4 +7,14 @@ export class SubscriptionRepository {
     );
     return rows as Subscription[];
   }
+
+  public async find(id: number): Promise<Subscription | []> {
+    const [
+      rows,
+    ]: any = await connector.execute(
+      'SELEC * FROM wallet_sub scription WHERE id = ?',
+      [id]
+    );
+    return (rows as Subscription) || [];
+  }
 }
