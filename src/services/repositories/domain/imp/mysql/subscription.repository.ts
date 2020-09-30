@@ -41,7 +41,7 @@ export class SubscriptionMysqlRepository implements ISubscriptionReposirtory {
   }
   public async update(entry: Subscription): Promise<void> {
     const now = new Date();
-    const [user_id, code, amount, cron, id]: any = entry;
+    const { user_id, code, amount, cron, id }: any = entry;
     await connector.execute(
       'UPDATE  wallet_subscription SET user_id=?, code=?, amount=?, cron=?, updated_at=? WHERE id=?',
       [user_id, code, amount, cron, now, id]

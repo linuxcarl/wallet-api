@@ -16,11 +16,11 @@ export class SubscriptionService {
   }
   public async store(entry: SubscriptionCreateDto): Promise<void> {
     const { user_id, code } = entry;
-    const originalEntry = await this.subscriptionRepository.findByUserAndCode(
+    const originalEntry: any = await this.subscriptionRepository.findByUserAndCode(
       user_id,
       code
     );
-    if (!originalEntry.length) {
+    if (!originalEntry.id) {
       try {
         await this.subscriptionRepository.store(entry as Subscription);
       } catch (error) {
@@ -31,9 +31,8 @@ export class SubscriptionService {
     }
   }
   public async update(id: number, entry: SubscriptionUpdateDto): Promise<void> {
-    const originalEntry = await this.subscriptionRepository.find(id);
-
-    if (originalEntry) {
+    const originalEntry: any = await this.subscriptionRepository.find(id);
+    if (originalEntry.id) {
       const newEntry = Object.assign(originalEntry, entry);
       try {
         await this.subscriptionRepository.update(newEntry);
