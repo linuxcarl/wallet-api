@@ -1,4 +1,3 @@
-import { promises } from 'fs';
 import { ApplicationException } from '../common/exceptions/application.exception';
 import { SubscriptionCreateDto } from '../dtos/subscription.dto';
 import { SubscriptionUpdateDto } from '../dtos/subscriptionUpdate.dto';
@@ -21,7 +20,7 @@ export class SubscriptionService {
       user_id,
       code
     );
-    if (!originalEntry) {
+    if (!originalEntry.length) {
       try {
         await this.subscriptionRepository.store(entry as Subscription);
       } catch (error) {

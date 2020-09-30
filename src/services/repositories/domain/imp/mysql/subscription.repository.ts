@@ -5,7 +5,7 @@ import { ISubscriptionReposirtory } from '../subscription.respository.interface'
 export class SubscriptionMysqlRepository implements ISubscriptionReposirtory {
   public async all(): Promise<Subscription[]> {
     const [rows] = await connector.execute(
-      'SELEC * FROM wallet_subscription ORDER BY id DESC'
+      'SELECT * FROM wallet_subscription ORDER BY id DESC'
     );
     return rows as Subscription[];
   }
@@ -13,7 +13,7 @@ export class SubscriptionMysqlRepository implements ISubscriptionReposirtory {
     const [
       rows,
     ]: any = await connector.execute(
-      'SELEC * FROM wallet_sub scription WHERE id = ?',
+      'SELECT * FROM wallet_subscription WHERE id = ?',
       [id]
     );
     return (rows[0] as Subscription) || [];
@@ -25,7 +25,7 @@ export class SubscriptionMysqlRepository implements ISubscriptionReposirtory {
     const [
       rows,
     ]: any = await connector.execute(
-      'SELEC * FROM wallet_sub scription WHERE id = ? AND code = ?',
+      'SELECT * FROM wallet_subscription WHERE id = ? AND code = ?',
       [id, code]
     );
     return (rows[0] as Subscription) || [];
@@ -33,7 +33,7 @@ export class SubscriptionMysqlRepository implements ISubscriptionReposirtory {
 
   public async store(entry: Subscription): Promise<void> {
     const now = new Date();
-    const [user_id, code, amount, cron]: any = entry;
+    const { user_id, code, amount, cron }: any = entry;
     await connector.execute(
       'INSERT INTO wallet_subscription (user_id, code, amount, cron, created_at) VALUES (?,?,?,?,?)',
       [user_id, code, amount, cron, now]
