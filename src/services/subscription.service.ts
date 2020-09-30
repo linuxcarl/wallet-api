@@ -1,6 +1,7 @@
 import { promises } from 'fs';
 import { ApplicationException } from '../common/exceptions/application.exception';
 import { SubscriptionCreateDto } from '../dtos/subscription.dto';
+import { SubscriptionUpdateDto } from '../dtos/subscriptionUpdate.dto';
 import { ISubscriptionReposirtory } from './repositories/domain/imp/subscription.respository.interface';
 import { Subscription } from './repositories/domain/subscription';
 
@@ -30,7 +31,7 @@ export class SubscriptionService {
       throw new ApplicationException('User subscription already exists.');
     }
   }
-  public async update(id: number, entry: any): Promise<void> {
+  public async update(id: number, entry: SubscriptionUpdateDto): Promise<void> {
     const originalEntry = await this.subscriptionRepository.find(id);
 
     if (originalEntry) {
