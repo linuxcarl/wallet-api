@@ -16,7 +16,19 @@ export class SubscriptionMysqlRepository implements ISubscriptionReposirtory {
       'SELEC * FROM wallet_sub scription WHERE id = ?',
       [id]
     );
-    return (rows as Subscription) || [];
+    return (rows[0] as Subscription) || [];
+  }
+  public async findByUserAndCode(
+    id: number,
+    code: string
+  ): Promise<Subscription | []> {
+    const [
+      rows,
+    ]: any = await connector.execute(
+      'SELEC * FROM wallet_sub scription WHERE id = ? AND code = ?',
+      [id, code]
+    );
+    return (rows[0] as Subscription) || [];
   }
 
   public async store(entry: Subscription): Promise<void> {
