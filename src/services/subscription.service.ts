@@ -30,8 +30,17 @@ export class SubscriptionService {
       throw new ApplicationException('User subscription already exists.');
     }
   }
-  public async update(entry: any): Promise<void> {
-    this.subscriptionRepository.update(entry);
+  public async update(id: number, entry: any): Promise<void> {
+    const originalEntry = await this.subscriptionRepository.find(id);
+
+    if (originalEntry) {
+      const newEntry = Object.assign(originalEntry, entry);
+      try {
+        await this.subscriptionRepository.update(newEntry);
+      } catch (error) {
+        throw new ApplicationException(error.message);
+      }
+    }
   }
   public async remove(id: number): Promise<void> {
     await this.subscriptionRepository.remove(id);
