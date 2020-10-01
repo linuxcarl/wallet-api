@@ -11,7 +11,7 @@
     "prettier:base": "prettier --parser typescript --single-quote",
     "prettier:check": "npm run prettier:base -- --list-different \"./src/**/*.{ts}\"",
     "prettier:write": "npm run prettier:base -- --write \"./src/**/*.ts\"",
-    "test": "cross-env NODE_ENV=test jest --coverage --testTimeout=50000",
+    "test": "NODE_ENV=test jest --coverage --testTimeout=50000",
     "test:watch": "jest --watch"
   },
   "repository": {

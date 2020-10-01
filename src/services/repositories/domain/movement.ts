@@ -6,5 +6,5 @@ export interface Movement {
   type: MovementTypes;
   amount: number;
   created_at: Date;
-  updated_at: Date;
+  updated_at?: Date | null;
 }
