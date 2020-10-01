@@ -11,7 +11,7 @@ export class CheckController {
       controller: 'default controller',
     });
   }
-  @route('date')
+  @route('/date')
   @GET()
   public date(req: Request, res: Response): void {
     res.send({

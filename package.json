@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "tsc": "tsc",
-    "start": "NODE_ENV=production node ./dist/server.js",
+    "start": "tsc && node ./dist/app.js",
     "dev": "ts-node-dev --respawn --transpile-only ./src/app.ts",
     "tslint": "tslint --project tsconfig.json",
     "prettier:base": "prettier --parser typescript --single-quote",
