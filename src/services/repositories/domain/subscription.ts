@@ -4,6 +4,6 @@ export interface Subscription {
   user_id: number;
   amount: number;
   cron: string;
-  create_at?: Date;
-  update_at?: Date;
+  created_at?: Date;
+  updated_at?: Date;
 }
