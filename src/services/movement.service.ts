@@ -3,8 +3,8 @@ import { ApplicationException } from '../common/exceptions/application.exception
 import { BalanceDto } from '../dtos/balance.dto';
 import { MovementDto } from '../dtos/movement.dto';
 import { Balance } from './repositories/domain/balance';
-import { IBalanceReposirtory } from './repositories/domain/imp/balance.respository';
-import { IMovementReposirtory } from './repositories/domain/imp/movement.respository';
+import { IBalanceReposirtory } from './repositories/imp/balance.respository';
+import { IMovementReposirtory } from './repositories/imp/movement.respository';
 import { Movement } from './repositories/domain/movement';
 
 export class MovementService {
