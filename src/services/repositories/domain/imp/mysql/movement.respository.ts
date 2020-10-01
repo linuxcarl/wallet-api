@@ -2,6 +2,7 @@ import { Movement } from '../../movement';
 import { IMovementReposirtory } from '../movement.respository';
 import connector from '../../../../../common/persistence/mysql.persistence';
 import { MovementDto } from '../../../../../dtos/movement.dto';
+
 export class MovementMysqlRepository implements IMovementReposirtory {
   private readonly now: Date = new Date();
   public async all(): Promise<Movement[]> {

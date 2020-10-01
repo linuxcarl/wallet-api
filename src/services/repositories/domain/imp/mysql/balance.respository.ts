@@ -23,28 +23,28 @@ export class BalanceMysqlRepository implements IBalanceReposirtory {
     const [
       rows,
     ]: any = await connector.execute(
-      'SELECT * FROM wallet_balance WHERE id =?',
+      'SELECT * FROM wallet_balance WHERE user_id =?',
       [id]
     );
-    return rows[0] as Balance;
+    return (rows[0] as Balance) || [];
   }
   public async store(entry: BalanceDto): Promise<number> {
     const { user_id, amount } = entry;
     const [
       ResultSetHeader,
     ]: any = await connector.execute(
-      'INSERT INTO wallet_balance(user_id,amount,created_at) VALUE(?,?,?,?)',
+      'INSERT INTO wallet_balance(user_id,amount,created_at) VALUE(?,?,?)',
       [user_id, amount, this.now]
     );
     return ResultSetHeader.insertId;
   }
   public async update(entry: BalanceDto): Promise<number> {
-    const { user_id, amount } = entry;
+    const { user_id, amount, id } = entry;
     const [
       ResultSetHeader,
     ]: any = await connector.execute(
-      'UPDATE wallet_balance SET user_id=?,amount=?, updated_at=?',
-      [user_id, amount, this.now]
+      'UPDATE wallet_balance SET user_id=?,amount=?, updated_at=? WHERE id=?',
+      [user_id, amount, this.now, id]
     );
     return ResultSetHeader.affectedRows;
   }

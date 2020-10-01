@@ -1,6 +1,6 @@
-import { promises } from 'fs';
 import { MovementTypes } from '../common/enums/movement-types';
 import { ApplicationException } from '../common/exceptions/application.exception';
+import { BalanceDto } from '../dtos/balance.dto';
 import { MovementDto } from '../dtos/movement.dto';
 import { Balance } from './repositories/domain/balance';
 import { IBalanceReposirtory } from './repositories/domain/imp/balance.respository';
@@ -22,11 +22,16 @@ export class MovementService {
 
   public async store(entry: MovementDto): Promise<number> {
     const { user_id, type } = entry;
-    const balance: Balance | [] = await this.balanceRepository.find(user_id);
+
+    const balance: Balance | [] = await this.balanceRepository.findByUserId(
+      user_id
+    );
+
     let result = 0;
-    if (type === MovementTypes.income) {
+
+    if (Number(type) === Number(MovementTypes.income)) {
       result = await this.income(entry, balance);
-    } else if (type === MovementTypes.outcome) {
+    } else if (Number(type) === Number(MovementTypes.outcome)) {
       result = await this.outcome(entry, balance);
     } else {
       throw new ApplicationException('Invalid movement type supplied');
@@ -36,18 +41,21 @@ export class MovementService {
 
   private async income(entry: MovementDto, balance: Balance | []) {
     const { user_id, amount } = entry;
-    let { amount: balanceAmount }: any = balance;
-    if (![balance].length) {
+
+    const { id }: any = balance;
+    if (!id) {
       await this.balanceRepository.store({
         amount,
         user_id,
-      } as Balance);
+      } as BalanceDto);
     } else {
+      let { amount: balanceAmount }: any = balance;
       balanceAmount += amount;
       await this.balanceRepository.update({
+        id,
         user_id,
         amount: balanceAmount,
-      } as Balance);
+      } as BalanceDto);
     }
     return await this.movementRepository.store(entry as Movement);
   }
