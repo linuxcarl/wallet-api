@@ -31,17 +31,7 @@ npm run dev
 
 ```
 
-Compile app to js
-
-If you want run mode production, first compile app, run the next line:
-
-```
-
-tsc
-
-```
-
-Production
+Compile app to js Production
 
 If you want run mode production, run the next line:
 
@@ -61,11 +51,17 @@ This project uses a number of open source package to work properly:
 
 - [Express](http://expressjs.com/) - fast node.js network app framework [@tjholowaychuk]
 
+- [Awilix](https://github.com/jeffijoe/awilix#readme) - Extremely powerful Dependency Injection (DI) container for JavaScript/Node
+
+- [MySql2](https://github.com/sidorares/node-mysql2#readme) - MySQL client for Node.js with focus on performance. Supports prepared statements, non-utf8 encodings, binary log protocol, compression, ssl much more
+
 - [tslint](https://eslint.org/) - Find and fix problems in your TypeScript code.
 
 - [Prettier](https://prettier.io/) - An opinionated code formatter.
 
 - [Husky](https://www.npmjs.com/package/husky) - Husky can prevent bad git commit, git push and more 🐶 woof!
+
+- [Jest](https://jestjs.io/) - Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
 
 ### Author
 
